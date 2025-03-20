@@ -1,0 +1,185 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}Home - Currency Exchange Bot{% endblock %}
+
+  
+
+{% block content %}
+
+<div class="container mt-4"></div>
+
+<div class="mb-6">
+
+  {% if last_balance %}
+
+  <section class="container" style="margin-top: 2em">
+
+    <table class="dashboard">
+
+      <tbody>
+
+        <tr>
+
+        <td><h4 class="dark-text">
+
+          Current balance
+
+        </h4>
+
+      </td>
+
+      <td style="width: 6%"></td>
+
+      <td>
+
+        <h4 class="dark-text">
+
+          Current value in USD
+
+        </h4>
+
+      </td> 
+
+    </tr>
+
+    <tr>
+
+      <td> <h3>
+
+        {{ last_balance.currency.symbol }}
+
+        {{ last_balance.value}}
+
+      </h3>
+
+      </td>
+
+      <td style="width: 6%"></td>
+
+      <td>
+
+        <h3>
+
+          USD {{ last_balance.usd_balance }}
+
+          {% if exchange_goal %}
+
+            {% if exchange_goal.difference_initial_value > 0 %}
+
+              <span style="color: #2fffba">
+
+                
+
+              </span>
+
+            {% else %}
+
+              <span style="color: red">
+
+                
+
+              </span>
+
+            {% endif %}
+
+          {% endif %}
+
+        </h3>
+
+      </td>
+
+    </tr>
+
+    </tbody></table>
+
+  </section>
+
+  {% else %}
+
+    <p class="fancy-paragraph">No currency balance available.</p>
+
+  {% endif %}
+
+  
+
+{% if exchange_goal %}
+
+<section class="container">
+
+  <table class="dashboard">
+
+    <tbody>
+
+      <tr>
+
+      <td><h4 class="dark-text">
+
+        Objective
+
+      </h4>
+
+    </td>
+
+    <td style="width: 6%"></td>
+
+    <td>
+
+      <h4 class="dark-text">
+
+        Initial value in USD
+
+      </h4>
+
+    </td> 
+
+  </tr>
+
+  <tr>
+
+    <td> <h3>
+
+      {{exchange_goal.initial_currency.symbol}}      {{exchange_goal.initial_value}}
+
+    </h3>
+
+    </td>
+
+    <td style="width: 6%"></td>
+
+    </td>
+
+    <td>
+
+      <h3>
+
+       
+        
+
+      </h3>
+      
+      </td>
+
+  </tr>
+
+</tbody></table>
+
+</section>
+
+{% endif %}
+
+</div>
+
+  
+
+
+<div class="exchange-button">
+
+  
+
+  <button disabled="true" class="fancy-button">Exchange</button>
+
+</div>
+
+{% endblock %}

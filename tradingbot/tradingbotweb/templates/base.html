@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{% block title %}Django Template{% endblock %}</title>
+
+  {% load static %}
+
+  <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+</head>
+
+<body>
+
+  <nav class="navbar">
+
+    <div class="container">
+
+      <a href="/" class="navbar-brand">Your own currency exchange bot</a>
+
+      <button class="navbar-toggle" aria-label="Toggle navigation">
+
+        <span></span>
+
+        <span></span>
+
+        <span></span>
+
+      </button>
+
+      <div class="navbar-menu">
+
+        <a href="/" class="navbar-item">Home</a>
+
+        <a href="/about" class="navbar-item">About</a>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+  
+
+  <main class="container">
+
+    {% block content %}
+
+    {% endblock %}
+
+  </main>
+
+  
+
+  <footer class="footer">
+
+    <div class="container">
+
+      <p>&copy; {% now "Y" %} Your own exchange bot.</p>
+
+    </div>
+
+  </footer>
+
+
+</body>
+
+</html>
